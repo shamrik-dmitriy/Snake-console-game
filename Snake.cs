@@ -56,6 +56,33 @@ namespace Snake
         }
 
         /// <summary>
+        ///     Обработка нажатия клавиш
+        /// </summary>
+        /// <param name="key">Клавиша</param>
+        public void HandleKey(ConsoleKey key)
+        {
+            switch (key)
+            {
+                case ConsoleKey.LeftArrow:
+                    Direction = Direction.Left;
+                    break;
+                case ConsoleKey.RightArrow:
+                    Direction = Direction.Right;
+                    break;
+                case ConsoleKey.DownArrow:
+                    Direction = Direction.Down;
+                    break;
+                case ConsoleKey.UpArrow:
+                    Direction = Direction.Up;
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
         ///     Получить следующую точку
         /// </summary>
         /// <returns>Следующая точка</returns>

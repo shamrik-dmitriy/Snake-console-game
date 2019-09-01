@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake
@@ -23,11 +24,19 @@ namespace Snake
                 figure.Draw();
             }
 
-            var point = new Point(0, 0, '#');
-            var snake = new Snake(point, 10, Direction.Down);
+            var snake = new Snake(new Point(0, 0, '#'), 10, Direction.Down);
             snake.Draw();
-            snake.Move();
-            Console.ReadLine();
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    snake.HandleKey(Console.ReadKey().Key);
+                }
+
+                Thread.Sleep(100);
+                snake.Move();
+            }
         }
     }
 }
