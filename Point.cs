@@ -37,6 +37,13 @@ namespace Snake
             Symbol = symbol;
         }
 
+        public Point(Point point)
+        {
+            X = point.X;
+            Y = point.Y;
+            Symbol = point.Symbol;
+        }
+
         #endregion
 
         #region Public Methods
@@ -48,6 +55,38 @@ namespace Snake
         {
             Console.SetCursorPosition(X, Y);
             Console.Write(Symbol);
+        }
+
+        /// <summary>
+        ///     Перемещение точки
+        /// </summary>
+        /// <param name="offset">Смещение</param>
+        /// <param name="direction">Направление движения</param>
+        public void Move(int offset, Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.Up:
+                {
+                    Y -= offset;
+                    break;
+                }
+                case Direction.Down:
+                {
+                    Y += offset;
+                    break;
+                }
+                case Direction.Left:
+                {
+                    X -= offset;
+                    break;
+                }
+                case Direction.Right:
+                {
+                    X += offset;
+                    break;
+                }
+            }
         }
 
         #endregion

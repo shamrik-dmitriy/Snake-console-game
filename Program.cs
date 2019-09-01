@@ -10,6 +10,10 @@ namespace Snake
     {
         static void Main(string[] args)
         {
+            Point point = new Point(0, 0, '#');
+            Snake snake = new Snake(point, 10, Direction.Down);
+            snake.Draw();
+            Console.ReadLine();
         }
     }
 }
