@@ -78,6 +78,26 @@ namespace Snake
             }
         }
 
+        /// <summary>
+        ///     Процесс поедания
+        /// </summary>
+        /// <param name="food">Точка еды</param>
+        /// <returns>True - в данном ходе змейка ест, False - в данном ходе змейка не ест</returns>
+        public bool Eat(Point food)
+        {
+            var head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.Symbol = head.Symbol;
+                LinePoints.Add(food);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         #endregion
 
         #region Private Methods

@@ -68,6 +68,16 @@ namespace Snake
         }
 
         /// <summary>
+        ///     Проверяет, попала ли точка в процесс поедния
+        /// </summary>
+        /// <param name="food">Точка, где расположена еда</param>
+        /// <returns>True - точка попала, False - точка не попала</returns>
+        public bool IsHit(Point food)
+        {
+            return food.X == this.X && food.Y == this.Y;
+        }
+
+        /// <summary>
         ///     Перемещение точки
         /// </summary>
         /// <param name="offset">Смещение</param>
