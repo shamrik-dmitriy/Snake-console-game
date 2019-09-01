@@ -30,6 +30,12 @@ namespace Snake
 
         #region Constructor
 
+        /// <summary>
+        ///     Конструктор для точки с заданием координат по осям
+        /// </summary>
+        /// <param name="x">Координата по оси X</param>
+        /// <param name="y">Координата по оси Y</param>
+        /// <param name="symbol">Символ отрисовки</param>
         public Point(int x, int y, char symbol)
         {
             X = x;
@@ -37,6 +43,10 @@ namespace Snake
             Symbol = symbol;
         }
 
+        /// <summary>
+        ///     Конструктор для точки с заданием точки
+        /// </summary>
+        /// <param name="point">Точка</param>
         public Point(Point point)
         {
             X = point.X;
@@ -87,6 +97,15 @@ namespace Snake
                     break;
                 }
             }
+        }
+
+        /// <summary>
+        ///     Очистка и перерисовка точка
+        /// </summary>
+        public void Clear()
+        {
+            Symbol = ' ';
+            Draw();
         }
 
         #endregion

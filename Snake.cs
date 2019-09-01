@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,11 +9,26 @@ namespace Snake
 {
     public class Snake : Figure
     {
-        private Point BeginPoint { get; set; }
-        private Point EndPoint { get; set; }
+        #region Private Properties
 
+        /// <summary>
+        ///     Направление перемещения
+        /// </summary>
+        private Direction Direction { get; set; }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        ///     Конструктор
+        /// </summary>
+        /// <param name="tail">Позиция хвоста змейки</param>
+        /// <param name="length">Длина змейки</param>
+        /// <param name="direction">Направление перемещения змейки</param>
         public Snake(Point tail, int length, Direction direction)
         {
+            Direction = direction;
             for (var i = 0; i <= length; i++)
             {
                 var point = new Point(tail);
@@ -20,5 +36,36 @@ namespace Snake
                 LinePoints.Add(point);
             }
         }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Перемещает змейку
+        /// </summary>
+        public void Move()
+        {
+            var tail = LinePoints.First();
+            LinePoints.Remove(tail);
+            var head = GetNextPoint();
+            LinePoints.Add(head);
+
+            tail.Clear();
+            head.Draw();
+        }
+
+        /// <summary>
+        ///     Получить следующую точку
+        /// </summary>
+        /// <returns>Следующая точка</returns>
+        private Point GetNextPoint()
+        {
+            var nextPoint = new Point(LinePoints.Last());
+            nextPoint.Move(1, Direction);
+            return nextPoint;
+        }
+
+        #endregion
     }
 }

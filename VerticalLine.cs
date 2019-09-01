@@ -8,6 +8,15 @@ namespace Snake
 {
     public class VerticalLine : Figure
     {
+        #region Constructor
+
+        /// <summary>
+        ///     Рисует вертикальную линию
+        /// </summary>
+        /// <param name="yTop">Верхняя точка линии</param>
+        /// <param name="yBottom">Нижняя точка линии</param>
+        /// <param name="x">Точка позиции линии по оси X</param>
+        /// <param name="symbol">Символ отрисовки линии</param>
         public VerticalLine(int yTop, int yBottom, int x, char symbol)
         {
             for (var i = yTop; i <= yBottom; i++)
@@ -15,5 +24,7 @@ namespace Snake
                 LinePoints.Add(new Point(x, i, symbol));
             }
         }
+
+        #endregion
     }
 }

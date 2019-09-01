@@ -8,6 +8,15 @@ namespace Snake
 {
     public class HorizontalLine : Figure
     {
+        #region Constructor
+
+        /// <summary>
+        ///     Рисует горизонтальную линию
+        /// </summary>
+        /// <param name="xLeft">Левая точка линии</param>
+        /// <param name="xRight">Правая точка линии</param>
+        /// <param name="y">Точка позиции линии по оси Y</param>
+        /// <param name="symbol">Символ отрисовки линии</param>
         public HorizontalLine(int xLeft, int xRight, int y, char symbol)
         {
             for (var i = xLeft; i <= xRight; i++)
@@ -15,5 +24,7 @@ namespace Snake
                 LinePoints.Add(new Point(i, y, symbol));
             }
         }
+
+        #endregion
     }
 }
