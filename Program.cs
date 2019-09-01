@@ -11,30 +11,23 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            var figures = new List<Figure>()
-            {
-                new HorizontalLine(0, 78, 0, '+'),
-                new HorizontalLine(0, 78, 24, '+'),
-                new VerticalLine(0, 24, 0, '+'),
-                new VerticalLine(0, 24, 78, '+'),
-            };
+            var walls = new Walls(80, 25);
+            walls.Draw();
 
             var snake = new Snake(new Point(2, 2, '#'), 1, Direction.Down);
+            snake.Draw();
 
             var foodCreator = new FoodCreator(80, 25, '$');
             var food = foodCreator.CreateFood();
-
-            figures.Add(snake);
             food.Draw();
-
-
-            foreach (var figure in figures)
-            {
-                figure.Draw();
-            }
 
             while (true)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
+
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
@@ -44,7 +37,6 @@ namespace Snake
                 {
                     snake.Move();
                 }
-
 
                 Thread.Sleep(200);
                 if (Console.KeyAvailable)

@@ -98,6 +98,24 @@ namespace Snake
             }
         }
 
+        /// <summary>
+        ///     Обработка столкновения с хвостом
+        /// </summary>
+        /// <returns>True - столкновение было, False - столкновения не было</returns>
+        public bool IsHitTail()
+        {
+            var head = LinePoints.Last();
+            for (var i = 0; i < LinePoints.Count - 2; i++)
+            {
+                if (head.IsHit(LinePoints[i]))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         #endregion
 
         #region Private Methods
