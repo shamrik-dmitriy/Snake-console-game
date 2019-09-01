@@ -34,7 +34,7 @@ namespace Snake
         /// <summary>
         ///     Отрисовывает фигуру
         /// </summary>
-        public void Draw()
+        public virtual void Draw()
         {
             foreach (var linePoint in LinePoints)
             {

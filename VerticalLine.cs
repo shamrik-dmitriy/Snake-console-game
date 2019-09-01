@@ -26,5 +26,23 @@ namespace Snake
         }
 
         #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        ///     Рисование границы голубым цветом
+        /// </summary>
+        public override void Draw()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            foreach (var linePoint in LinePoints)
+            {
+                linePoint.Draw();
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        #endregion
     }
 }
